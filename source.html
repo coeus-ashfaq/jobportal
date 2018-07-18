@@ -1,0 +1,223 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JavaScript Practices</title>
+	<meta name="author" content="Ashfaq Ahmad">
+	<meta name="description" content="Second Assignment of Front End Training">
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fontawesome/css/fontawesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="banner">
+
+	<div class="form-box">
+
+		<form method="post">
+
+			<div class="form-group">
+			    <span id="namelabel" for="username"></span>
+			    <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Enter Name">
+			</div>
+
+			<div class="form-group">
+			    <span id="emaillabel" for="email"></span>
+			    <input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+			</div>
+
+			<div class="form-group">
+			    <span id="phonelabel" for="phone"></span>
+			    <input type="text" class="form-control" id="phone" name="phone" aria-describedby="emailHelp" placeholder="Enter Phone #">
+			</div>
+
+			<div class="form-group">
+			    <span id="passwordlabel" for="password"></span>
+			    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+			</div>
+
+			<div class="form-group">
+			    <span id="repasswordlabel" for="re_password"></span>
+			    <input type="password" class="form-control" id="re_password" name="re_password" placeholder="Confirm Password">
+			    <span id="okpasswordlabel" for="re_password">* Password and Confirm Password didn't match</span>
+
+			 </div>			
+
+			 <button id="submit" type="button" class="btn btn-primary">Submit</button>
+
+		</form>
+
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+
+	var nameRegex = /^[a-zA-Z]+[a-zA-Z0-9]*$/;
+	var emailRegex = /^[A-Za-z0-9_.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/i; 
+	var phoneRegex = /^[0-9]+$/;
+	var passwordRegex = /^[A-Za-z0-9]+$/;
+
+	document.getElementById("submit").addEventListener("click", function () {
+		
+		if (!document.getElementById("username").value){
+
+			document.getElementById("username").style.border = "1px solid red";
+			document.getElementById("namelabel").style.display = "inline";
+			document.getElementById("namelabel").innerHTML = "* Username is Required Field";
+
+		}
+		else{
+
+			if(nameRegex.test(document.getElementById("username").value)){
+				document.getElementById("namelabel").style.display = "none";
+				document.getElementById("username").style.border = "1px solid #ccc";
+
+			}
+			else {
+
+				document.getElementById("username").style.border = "1px solid red";
+				document.getElementById("namelabel").style.display = "inline";
+				document.getElementById("namelabel").innerHTML = "* Please Enter an Alphanumeric Username String";
+			}
+			
+		}
+
+
+		if (!document.getElementById("email").value) {
+
+			document.getElementById("email").style.border = "1px solid red";
+			document.getElementById("emaillabel").style.display = "inline";
+			document.getElementById("emaillabel").innerHTML = "* Email is Required Field";
+
+		}
+		else{
+
+			if(emailRegex.test(document.getElementById("email").value)){
+				document.getElementById("emaillabel").style.display = "none";
+				document.getElementById("email").style.border = "1px solid #ccc";
+
+			}
+			else {
+				document.getElementById("email").style.border = "1px solid red";					
+				document.getElementById("emaillabel").style.display = "inline";
+				document.getElementById("emaillabel").innerHTML = "* Please Enter a Valid Email Address";
+			}
+		}
+
+
+		if (!document.getElementById("phone").value){
+
+			document.getElementById("phone").style.border = "1px solid red";
+			document.getElementById("phonelabel").style.display = "inline";
+			document.getElementById("phonelabel").innerHTML = "* Phone # is Required Field";
+
+		}
+		else{
+
+			if(phoneRegex.test(document.getElementById("phone").value)){
+				document.getElementById("phonelabel").style.display = "none";
+				document.getElementById("phone").style.border = "1px solid #ccc";
+
+			}
+			else {
+
+				document.getElementById("phone").style.border = "1px solid red";	
+				document.getElementById("phonelabel").style.display = "inline";
+				document.getElementById("phonelabel").innerHTML = "* Please Enter a Numeric Phone Number";
+
+			}
+		}
+
+
+		if (!document.getElementById("password").value){
+
+			document.getElementById("password").style.border = "1px solid red";
+			document.getElementById("passwordlabel").style.display = "inline";
+			document.getElementById("passwordlabel").innerHTML = "* Password is Required Field";
+
+		}
+		else{
+			
+			if(passwordRegex.test(document.getElementById("password").value)){
+
+				document.getElementById("passwordlabel").style.display = "none";
+				document.getElementById("password").style.border = "1px solid #ccc";
+
+			}
+			else {
+
+				document.getElementById("password").style.border = "1px solid red";					
+				document.getElementById("passwordlabel").style.display = "inline";
+				document.getElementById("passwordlabel").innerHTML = "* Please Enter an Alphanumeric Password";
+
+			}
+		}
+
+
+		if (!document.getElementById("re_password").value){
+
+			document.getElementById("re_password").style.border = "1px solid red";
+			document.getElementById("repasswordlabel").style.display = "inline";
+			document.getElementById("repasswordlabel").innerHTML = "* Confirm Password is Required Field";
+
+		}
+
+		else{
+			
+			if(passwordRegex.test(document.getElementById("re_password").value)){
+
+				document.getElementById("repasswordlabel").style.display = "none";
+				document.getElementById("re_password").style.border = "1px solid #ccc";
+
+			}
+			else {
+
+				document.getElementById("re_password").style.border = "1px solid red";				
+				document.getElementById("repasswordlabel").style.display = "inline";
+				document.getElementById("repasswordlabel").innerHTML = "* Please Enter an Alphanumeric Password";
+
+			}
+		}
+
+		if (document.getElementById("re_password").value && document.getElementById("password").value && passwordRegex.test(document.getElementById("re_password").value) && passwordRegex.test(document.getElementById("password").value)) { 
+
+			if (document.getElementById("re_password").value != document.getElementById("password").value ) {
+
+				document.getElementById("re_password").style.border = "1px solid red";
+				document.getElementById("password").style.border = "1px solid red";
+				document.getElementById("okpasswordlabel").style.display = "inline";
+				document.getElementById("okpasswordlabel").innerHTML = "* Password Fields are not same !";
+			}
+
+			else {
+				document.getElementById("password").style.border = "1px solid #CCC";
+				document.getElementById("re_password").style.border = "1px solid #ccc";
+				document.getElementById("okpasswordlabel").style.display = "none";
+			}
+		}
+		else{
+			document.getElementById("okpasswordlabel").style.display = "none";
+		}
+
+	});
+
+
+</script>
+
+</body>
+</html> 
