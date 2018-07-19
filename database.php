@@ -45,19 +45,25 @@ class MySQLConnection {
     }
 
     public function query($sql){
+
         $this->last_query = $sql;
+
+
         $result = mysqli_query($this->connection,$sql);
+
         $this->confirm_query($result);
         return $result;
     }
 
     private function confirm_query($result)
     {
+
+
         if (!$result){
 
             $output = "Query Failed: ".mysqli_error($this->connection) . "<br>";
             $output .= "Last SQL Query : ".$this->last_query;
-            die($output);
+
         }
     }
 
@@ -78,19 +84,31 @@ class MySQLConnection {
     }
 
     public function escape_value( $value ) {
+//        die(var_dump(($value)));
+
 //        $magic_quotes_active = get_magic_quotes_gpc();
 //        $new_enough_php = function_exists( "mysqli_real_escape_string" ); // i.e. PHP >= v4.3.0
 
         if( $this->real_escape_string_exits ) { // PHP v4.3.0 or higher
             // undo any magic quote effects so mysql_real_escape_string can do the work
-            if( $this->magic_quotes_active ) { $value = stripslashes( $value ); }
-            $value = mysqli_real_escape_string($this->connection, $value );
+            if( $this->magic_quotes_active ) { $value = stripslashes( $value );
+
+            }
+//            die(var_dump(($value)));
+//            $value = mysqli_real_escape_string($this->connection, $value );
+//            die(var_dump(($value)));
         } else { // before PHP v4.3.0
             // if magic quotes aren't already on then add slashes manually
             if( !$this->magic_quotes_active ) { $value = addslashes( $value ); }
             // if magic quotes are active, then the slashes already exist
         }
+
         return $value;
+    }
+
+    public static function object(){
+        $obj = new MySQLConnection();
+        return $obj;
     }
 }
 

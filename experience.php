@@ -7,9 +7,9 @@
  */
 
 require_once ("database.php");
-require_once ("database_object.php");
+require_once ("database_static.php");
 
-class Experience extends DatabaseObject{
+class Experience extends DatabaseStatic {
 
     protected static $table_name = "experience";
     protected static $db_fields = array('id', 'company_name', 'job_title', 'start_date', 'end_date', 'job_designation', 'address', 'user_id');

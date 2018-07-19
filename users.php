@@ -39,6 +39,7 @@ class User extends DatabaseStatic {
         $password = $database->escape_value($password);
 
         $sql = "SELECT * from ".self::$table_name." WHERE email='$username' AND password = '$password' LIMIT 1";
+//        die(var_dump(true));
 
         $result_arr = parent::find_by_sql($sql);
 
@@ -55,6 +56,10 @@ class User extends DatabaseStatic {
         else{
             return "";
         }
+    }
+
+    public function validate_picture(){
+
     }
 
 //    public function find_all(){
@@ -106,7 +111,7 @@ class User extends DatabaseStatic {
 //        $object_vars = $this->attributes();
 //        return array_key_exists($attribute,$object_vars);
 //    }
-//
+////
 //    protected function attributes() {
 //        // return an array of attribute names and their values
 //        $attributes = array();
@@ -118,7 +123,6 @@ class User extends DatabaseStatic {
 //        return $attributes;
 //    }
 //
-//
 //    protected function sanitized_attributes() {
 //        global $database;
 //        $clean_attributes = array();
@@ -129,7 +133,6 @@ class User extends DatabaseStatic {
 //        }
 //        return $clean_attributes;
 //    }
-//
 //
 //    public function create() {
 //        global $database;

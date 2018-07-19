@@ -4,7 +4,7 @@ if (!$session->is_logged_in()){
     header("Location:  login.php");
 }
 else{
-
+    require_once ("job.php");
     ?>
     <nav class="navbar navbar-inverse navbar-top">
         <div class="container">
@@ -26,6 +26,39 @@ else{
 
     <div class="container">
 
+        <div class="job-container">
+            <?php
+
+
+
+            $result = Job::find_all();
+
+            if($result){
+
+                foreach($result as $job){
+
+                    ?>
+                    <div class="main-div">
+                        <a class="del-btn btn btn btn-danger" onclick="delJob(<?php echo $job->id ?>)" >Delete</a>
+                        <a class="edit-btn btn btn-success" onclick="editJob(<?php echo $job->id ?>)">Edit</a>
+                        Company Name: <label><?php echo $job->company_name ?></label><br>
+                        Industry Type: <label><?php echo $job->industry ?></label><br>
+                        Designation: <label><?php echo $job->designation ?></label><br>
+                        Offered Salary: <label><?php echo $job->offered_salary ?></label><br>
+                        Required Experience: <label><?php echo $job->experience_required ?></label><br>
+                        Job Shift: <label><?php echo $job->shift ?></label><br>
+                        Job Type: <label><?php echo $job->job_type ?></label><br>
+                        Positions: <label><?php echo $job->slots ?></label><br>
+                    </div>
+
+                    <br>
+                    <?php
+                }
+
+            }
+
+            ?>
+        </div>
 
 
     </div>

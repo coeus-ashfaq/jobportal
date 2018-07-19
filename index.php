@@ -10,45 +10,6 @@
 //require_once ("users.php");
 require_once ("sessions.php");
 
-//if (isset($database)){
-//    echo True;
-//}else{
-//    echo false;
-//}
-//
-//echo "<br>";
-//
-//
-//echo $database->escape_value("It's Working")."<br>";
-//
-////$sql = "SELECT * From users";
-////$result = $database->query($sql);
-////
-////$user = $database->fetch_array($result);
-//
-//
-//$obj = new User();
-//$result = $obj->find_all();
-////while ($user = $database->fetch_array($result)){
-////    echo $user["first_name"]."<br>";
-////}
-//
-//foreach ($result as $key){
-//    echo $key->full_name();
-//}
-////die(var_dump($result));
-////echo $result["first_name"];
-//
-////echo $result["first_name"];
-//
-//$user = new User();
-//$result = $user->find_by_id(1);
-////$user = $user->instantiate($result);
-//
-//echo $result->full_name();
-
-
-
 
 if (!$session->is_logged_in()){
 
@@ -84,12 +45,10 @@ if (!$session->is_logged_in()){
         if (isset($session->type) and $session->type == 'employer'){
 
             include('employeer.php');
-//            echo "Employer";
         }
         elseif (isset($session->type) and $session->type == 'applicant'){
 
             include('jobseeker.php');
-            echo "Applicant";
         }
         else{
             include('logout.php');

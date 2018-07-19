@@ -4,6 +4,7 @@ require_once ("sessions.php");
 require_once ("database.php");
 require_once ("users.php");
 
+
 if ($session->is_logged_in()){
 
     header("Location:  index.php");
@@ -14,7 +15,6 @@ if (isset($_POST["submit"])){
     $password = trim($_POST["password"]);
 
     $found_user = User::authanticate($username,$password) ;
-//        die(var_dump($found_user));
 
     if ($found_user){
         $message = "User Already Registered with this Email";
@@ -27,8 +27,9 @@ if (isset($_POST["submit"])){
         $user->last_name = (trim($_POST["lname"]));
         $user->type = (trim($_POST["usertype"]));
         $user->password = (trim($_POST["password"]));
+//        die(var_dump($user));
 
-        if ($user->create()){
+        if ($user::create($user)){
 
             header("Location:  index.php");
         }
